@@ -2,7 +2,7 @@
 List<Player> players = new List<Player>()
 {
     new Player("Joe", 32),
-    new Player("Jack", 30),
+    new Player("Jack", 40),
     new Player("William", 37),
     new Player("Averell", 25)
 };
@@ -12,16 +12,20 @@ Player elder = players.First();
 int biggestAge = elder.Age;
 
 // search
+//
+/*
 foreach (Player p in players)
 {
     if (p.Age > biggestAge) // memorize new elder
     {
-        elder = p;
+
         biggestAge = p.Age; // for future loops
     }
-}
+}*/
+Player elder1 = players.Aggregate((playe, player) => playe.Age >= player.Age ? playe : player);
 
-Console.WriteLine($"Le plus agé est {elder.Name} qui a {elder.Age} ans");
+
+Console.WriteLine($"Le plus agé est {elder1.Name} qui a {elder1.Age} ans");
 
 Console.ReadKey();
 
